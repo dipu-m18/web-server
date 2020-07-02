@@ -6,28 +6,236 @@
     <title>Weather</title>
     <link rel="icon" href= "/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
-    
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+     
+     {{!-- slider --}}
+      <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/lightslider.css"/>
+        
+       <script src="js/JQuery3.3.1.js" type="text/javascript" ></script>
+       <script src="js/lightSlider.js" type="text/javascript" ></script>
+    {{!-- slider --}}
+     </head>
+
 
 <body>
     <div class="main-content">
         {{>header}}
-        <p>Use this site to get your weather!</p>
-
-        <form>
-            <input placeholder="Location">
-            <button>Search</button>
-        </form>
-
-        <p id="message-1"></p>
-        <p id="message-2"></p>
-
-        <p></p>
+        {{!-- <p>Use this site to get your weather!</p> --}}
+    <div  class= "wrapper">
+          <div>
+            <form>
+                 <input placeholder="Location">
+                 <button class="hoverr">Search</button><br>
+             </form>
+        
+               <h2 id="location"></h2>
+               <p id="date"></p>
+               <div class="weather-icon"></div>
+               <p><h3 id="weatherDescription"></h3></p>
+            
+                 {{!-- <div class="button-box">
+                    <div class="btn" onclick="this.classList.toggle('active')"></div>
+                     <button id="button1" class="toggle">Daily</button>
+                     <button id="button2" class="toggle">Hourly</button>
+                </div> --}}
+                <div class="button-box">
+                    <div id="btn" ></div>
+                     <button id="button1" class="toggle" >Daily</button>
+                     <button id="button2" class="toggle" >Hourly</button>
+                </div>
+           </div>
+           <div>
+               <h3 id="temperature">40</h3>
+               <p class="sub-temp"><span id="maxTemp"></span><span id="minTemp"></span></p>
+               <br>
+               <button id="moreDetails" class="hoverr">More details</button>
+           </div>
+        </div>
+        
     </div>
-    
-    {{>footer}}
+    <br>
 
-    <script src="/js/app.js"></script>
+    {{!-- The Modal --}}
+    <div id="myModal" class="modal">
+        {{!-- Modal Content --}}
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Currently</h2>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Feels Like</td>
+                        <td id="feelsLike" class="modal-values"></td>
+                    </tr>
+                    <tr>
+                        <td>Dews Point</td>
+                        <td id="dewsPoint" class="modal-values"></td>
+                    </tr>
+                    <tr>
+                        <td>Clouds</td>
+                        <td id="clouds" class="modal-values"></td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td id="humidity" class="modal-values"></td>
+                    </tr>
+                    <tr>
+                        <td>Pressure</td>
+                        <td id="pressure" class="modal-values"></td>
+                    </tr>
+                    <tr>
+                        <td>Wind Speed</td>
+                        <td id="wind" class="modal-values"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button id="close2" class="values">Close</button>
+            </div>
+        </div>
+    </div>
+
+    {{!-- slider --}}
+   
+        <div class="container">
+            <!-- slider -->
+            
+             <ul id="autoWidth" class="cs-hidden">
+               <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day0"></span>&nbsp; ,<span id="month0"></span><span id="date0"></span></h4>
+                            <div class="model" id="icon0"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp0">&nbsp;</span><span id="minTemp0"></span></h4>
+                                <!-- character description -->
+                                <p id="details0"></p>
+                            </div>
+                    </div>
+                </li>
+
+               <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day1"></span>&nbsp; ,<span id="month1"></span><span id="date1"></span></h4>
+                            <div class="model" id="icon1"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp1"></span>&nbsp;<span id="minTemp1"></span></h4>
+                                <!-- character description -->
+                                <p id="details1"></p>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day2"></span>&nbsp; ,<span id="month2"></span><span id="date2"></span></h4>
+                            <div class="model" id="icon2"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp2"></span>&nbsp;<span id="minTemp2"></span></h4>
+                                <!-- character description -->
+                                <p id="details2"></p>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day3"></span>&nbsp; ,<span id="month3"></span><span id="date3"></span></h4>
+                            <div class="model" id="icon3"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp3"></span>&nbsp;<span id="minTemp3"></span></h4>
+                                <!-- character description -->
+                                <p id="details3"></p>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day4"></span>&nbsp; ,<span id="month4"></span><span id="date4"></span></h4>
+                            <div class="model" id="icon4"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp4"></span>&nbsp;<span id="minTemp4"></span></h4>
+                                <!-- character description -->
+                                <p id="details4"></p>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day5"></span>&nbsp; ,<span id="month5"></span><span id="date5"></span></h4>
+                            <div class="model" id="icon5"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp5"></span>&nbsp;<span id="minTemp5"></span></h4>
+                                <!-- character description -->
+                                <p id="details5"></p>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day6"></span>&nbsp; ,<span id="month6"></span><span id="date6"></span></h4>
+                            <div class="model" id="icon6"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp6"></span>&nbsp;<span id="minTemp6"></span></h4>
+                                <!-- character description -->
+                                <p id="details6"></p>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="item-a">
+                    <div class="box">
+                            <!-- model -->
+                            <h4><span id="day7"></span>&nbsp; ,<span id="month7"></span><span id="date7"></span></h4>
+                            <div class="model" id="icon7"></div>
+                            <!-- details -->
+                            <div class="details" >
+                                <!-- logo-characters -->
+                                <h4><span id="maxTemp7"></span>&nbsp;<span id="minTemp7"></span></h4>
+                                <!-- character description -->
+                                <p id="details7"></p>
+                            </div>
+                    </div>
+                </li>
+             </ul>
+            <!-- slider-box -->  
+        </div>
+        <hr>
+       
+    {{!-- slider --}}
+    {{>footer}}
+    <script src="/js/script.js" type="text/javascript"></script>
+     <script src="/js/app.js"></script>
 </body>
 
 </html>
