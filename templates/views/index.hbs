@@ -15,6 +15,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="/css/lightslider.css"/>
+
+        {{!-- <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> --}}
+
         
        <script src="js/JQuery3.3.1.js" type="text/javascript" ></script>
        <script src="js/lightSlider.js" type="text/javascript" ></script>
@@ -23,7 +29,9 @@
 
 
 <body>
+    
     <div class="main-content">
+        <span id="dimensions"></span>
         {{>header}}
         {{!-- <p>Use this site to get your weather!</p> --}}
     <div  class= "wrapper">
@@ -97,7 +105,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button id="close2" class="values">Close</button>
+                <button id="close2" class="values"></button>
             </div>
         </div>
     </div>

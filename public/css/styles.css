@@ -1,11 +1,58 @@
-@keyframes example {
+/* @keyframes example {
   0%{display: none;}
   33%{display: none;}
   66%{display: none;}
   100%{display: none;}
+} */
+
+@media (min-width: 500px) and (max-width: 667px){
+  .modal{
+    /* width:  568px;
+    height: auto; */
+    font-size: 12px;
+   }
+   .modal-values{
+     padding-left: 30px;
+   }
+}
+@media (min-width: 668px) and (max-width: 705px){
+  .modal{
+    /* width:  568px;
+    height: 900px; */
+    font-size: 12px;
+   }
+   .modal-values{
+     padding-left: 50px;
+   }
 }
 
+@media (min-width: 705px) {
+  
+   .modal-values{
+     padding-left: 100px;
+   }
+}
 
+@media (min-width: 850){
+  .modal-values{
+    padding-left: 250px;
+  }
+}
+
+@media (min-width: 995){
+  
+  .modal-values{
+    padding-left: 250px;
+  }
+}
+
+@media (min-width: 1000px){
+  
+  
+  .modal-values{
+    padding-left: 250px;  
+  }
+}
 
 body{
     color:white;
@@ -177,11 +224,11 @@ button{
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 100%;  /* Full width   */
+    height: 100%; /* Full height  */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
     -webkit-animation-name: fadeIn; /* Fade in the background */
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
@@ -195,7 +242,7 @@ button{
     margin: 10% 22.7% ;
     background-color: #fefefe;
     width: 50%;
-    height: 60%;
+    height: auto;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
@@ -230,7 +277,7 @@ button{
   .modal-body {
       padding: 10px 50px;
       color: black;
-      font-size: 20px;
+
       font-weight: 900;
       line-height: 35px;
     }
@@ -241,9 +288,9 @@ button{
     
   }
 
-  .modal-values{
+  /* .modal-values{
     padding-left: 350px;  
-  }
+  } */
   
   /* Add Animation */
   @-webkit-keyframes slideIn {

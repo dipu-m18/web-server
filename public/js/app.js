@@ -1,5 +1,13 @@
 
 console.log('Client side javascript file is loaded!')
+window.onresize = displayWindowSize;
+window.onload = displayWindowSize;
+function displayWindowSize() {
+    // your size calculation code here
+    myWidth = window.innerWidth;
+        myHeight = window.innerHeight;
+    document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
+};
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
@@ -25,6 +33,7 @@ let weatherData
 let locationIcon = document.querySelector('.weather-icon')
 let dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat']
 let monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+// let mm=['st','nd','rd','th']
 
 //get the modal
 const modal = document.getElementById("myModal")
@@ -66,7 +75,6 @@ const locationn = 'Kharagpur'
         }
         else{
              displayWeather(data)
-           
              
              dailyArray= data.dailyArray.slice()
              hourlyArray= data.hourlyArray.slice()
@@ -169,16 +177,32 @@ function getPosition2(){
 
 
 function displayDaily(dailyArray){
-    for(let j=0;j<dailyArray.length;j++){
+    for(let j=0;j<7;j++){
         let dd = new Date((dailyArray[j].day)*1000)
+        let mm;
         //console.log(dd)
-        document.querySelector('#day'+j).textContent = dayNames[dd.getDay()]
+        if(dd.getMonth()==0){
+            mm='st'
+        }
+        else if(dd.getMonth()==1){
+            mm='nd'
+        }
+        else if(dd.getMonth()==2){
+            mm='rd'
+        }
+        else{
+            mm='th'
+        }
+        document.querySelector('#day'+j).textContent = dayNames[dd.getDay()]+', '+monthName[dd.getMonth()]+' '+dd.getDate()+mm
         document.querySelector('#icon'+j).innerHTML=`<img src="icons/${dailyArray[j].icon}.png" style="width:40px;height:40px;">` 
         document.querySelector('#details'+j).textContent= dailyArray[j].detail
         document.querySelector('#maxTemp'+j).textContent= dailyArray[j].maxTemp
         document.querySelector('#minTemp'+j).textContent = dailyArray[j].minTemp
         //console.log(data.arr[j].maxTemp+" "+dailyArray[j].minTemp)
     }
+
+    
+       
 }
 
 function displayHourly(){
