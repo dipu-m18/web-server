@@ -61,6 +61,7 @@ const forecast = (latitude, longitude, callback) => {
                  humidity: body.current.humidity,
                  pressure: body.current.pressure,
                  windSpeed: body.current.wind_speed,
+                 main: body.current.weather[0].main
              }, 
             dailyArray,
             hourlyArray
@@ -71,7 +72,3 @@ const forecast = (latitude, longitude, callback) => {
 
 
 module.exports= forecast
-
-// weather_descriptions: body.current.weather_descriptions,
-//                 temperature: body.current.temperature,
-//                 chance_of_rain: body.current.precip

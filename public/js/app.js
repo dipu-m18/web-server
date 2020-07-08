@@ -1,13 +1,22 @@
 
 console.log('Client side javascript file is loaded!')
-window.onresize = displayWindowSize;
-window.onload = displayWindowSize;
-function displayWindowSize() {
-    // your size calculation code here
-    myWidth = window.innerWidth;
-        myHeight = window.innerHeight;
-    document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
-};
+function myFunction() {
+    var elmnt = document.getElementById("ccc");
+    elmnt.scrollBy(200, 0);
+    }
+    function myFunctionn() {
+        var elmnt = document.getElementById("ccc");
+        elmnt.scrollBy(-200, 0);
+        }
+
+// window.onresize = displayWindowSize;
+// window.onload = displayWindowSize;
+// function displayWindowSize() {
+//     // your size calculation code here
+//     myWidth = window.innerWidth;
+//     myHeight = window.innerHeight;
+//     document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
+// };
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
@@ -24,10 +33,13 @@ const humidity= document.querySelector('#humidity')
 const pressure= document.querySelector('#pressure')
 const wind= document.querySelector('#wind')
 
+ 
 let dailyArray
 let hourlyArray
 let weatherData
-
+let background
+background='clear'
+displayBackground(background)
 
 
 let locationIcon = document.querySelector('.weather-icon')
@@ -49,62 +61,64 @@ const span = document.getElementsByClassName("close")[0]
 span.onclick = function(){
     modal.style.display = "none";
 }
-const close2 = document.getElementById("close2")
- close2.onclick= function(){
-     modal.style.display= "none";
- }
+// const close2 = document.getElementById("close2")
+//  close2.onclick= function(){
+//      modal.style.display= "none";
+//  }
 
  moreDetails.onclick = function(){
    modal.style.display="block";
  }
 
-
-const locationn = 'Kharagpur'
+ //const locationn = 'Mumbai'
     
     var ddd =new Date()
     messageTwo.textContent= ddd.toDateString()
     messageOne.textContent = "Loading..."
-   
-    
-        
-        fetch('http://localhost:3000/weather?address='+locationn).then((response) => {
-    response.json().then((data) => {
-        
-        if(data.error){
-            messageOne.textContent = data.error
-        }
-        else{
-             displayWeather(data)
-             
-             dailyArray= data.dailyArray.slice()
-             hourlyArray= data.hourlyArray.slice()
-             console.log(hourlyArray)
-            displayDaily(dailyArray)   
-       }
-    })
-})
 
 
-moreDetails.onclick = function(){
-    modal.style.display="block";
-//     fetch('http://localhost:3000/weather?address='+location).then((response) => {
+        
+//         fetch('http://localhost:3000/weather?address='+locationn).then((response) => {
 //     response.json().then((data) => {
         
 //         if(data.error){
 //             messageOne.textContent = data.error
 //         }
 //         else{
-            
-//             feelsLike = data.forecast.feelsLike + '\u02DA'
-//             dewsPoint= data.forecast.dewsPoint + '\u02DA'
-//             clouds= data.forecast.clouds+ '%'
-//             humidity= data.forecast.humidity + '%'
-//             pressure= data.forecast.pressure + 'hPa'
-//             wind= data.forecast.windSpeed + 'meter/sec'
-            
-//         }
+//         background=data.forecast.main.toLowerCase()
+        
+//             displayBackground(background)
+//              displayWeather(data)
+             
+//              dailyArray= data.dailyArray.slice()
+//              hourlyArray= data.hourlyArray.slice()
+//              console.log(hourlyArray)
+//             displayDaily(dailyArray)   
+//        }
 //     })
-// })   
+// })
+
+
+moreDetails.onclick = function(){
+    modal.style.display="block";
+    fetch('http://localhost:3000/weather?address='+location).then((response) => {
+    response.json().then((data) => {
+        
+        if(data.error){
+            messageOne.textContent = data.error
+        }
+        else{
+            
+            feelsLike = data.forecast.feelsLike + '\u02DA'
+            dewsPoint= data.forecast.dewsPoint + '\u02DA'
+            clouds= data.forecast.clouds+ '%'
+            humidity= data.forecast.humidity + '%'
+            pressure= data.forecast.pressure + 'hPa'
+            wind= data.forecast.windSpeed + 'meter/sec'
+            
+        }
+    })
+})   
 }
 
 weatherForm.addEventListener('submit', (e) => {
@@ -124,8 +138,12 @@ weatherForm.addEventListener('submit', (e) => {
             messageOne.textContent = data.error
         }
         else{
+            background=data.forecast.main.toLowerCase()
+            console.log(background)
+            displayBackground(background)
             displayWeather(data)
             // console.log(data.arr.length)
+            // document.body.style.backgroundImage = "url('img_tree.png')";
             dailyArray= data.dailyArray
             hourlyArray= data.hourlyArray
             displayDaily(dailyArray)  
@@ -134,6 +152,8 @@ weatherForm.addEventListener('submit', (e) => {
     })
 })
 })
+
+
 
 //////////////////////D I S P L A Y
 function displayWeather(data){
@@ -216,4 +236,36 @@ function displayHourly(){
         document.querySelector('#maxTemp'+j).textContent= hourlyArray[j].temp
         //console.log(data.arr[j].maxTemp+" "+dailyArray[j].minTemp)
     }
+}
+
+function displayBackground(background){
+   if(background==='smoke' || background==='mist' || background==='haze' ||background==='dust' || background==='fog' || background==='sand' || background==='dust' || background==='ash'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/mist.jpg')";
+    }
+    else if(background==='clear'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/clearSky.jpg')";
+    }
+    else if(background==='clouds'){
+        console.log(background+" ppppppp")
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/clouds.jpg')";
+    }
+    else if(background==='drizzle'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/drizzle.jpg')";
+    }else if(background=== 'thunderstorm'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/thunder.jpg')";
+    }
+    else if(background==='snow'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/snow.jpg')";
+    }
+    else if(background==='squall'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/squall.jpg')";
+    }
+    else if(background==='tornado'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/tornado.jpg')";
+    }
+    else if(background==='rain'){
+        document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/rain.jpg')";
+   
+    }
+
 }

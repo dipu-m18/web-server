@@ -45,30 +45,29 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-    if(!req.query.address){
-       var altAddress= 'Kharagpur'
-       geocode(altAddress, (error, {latitude, longitude, location} = {}) => {
-        if(error){
-            return res.send({error})
-        }
-          
-            forecast(latitude, longitude, (error, forecastData, dailyArr, hourlyArr) => {
-                if(error){
-                    return res.send({error})
-                }
-               res.send({
-                    location,
-                    address: req.query.address,
-                    forecast: forecastData,
-                    dailyArray: dailyArr,
-                    hourlyArray: hourlyArr
-                    })
-            })
-    })  
+    // if(!req.query.address){
+    //    var altAddress= 'Kharagpur'
+    //    geocode(altAddress, (error, {latitude, longitude, location} = {}) => {
+    //     if(error){
+    //         return res.send({error})
+    //     }  
+    
+    // forecast(latitude, longitude, (error, forecastData, dailyArr, hourlyArr) => {
+    //             if(error){
+    //                 return res.send({error})
+    //             }
+    //            res.send({
+    //                // location,
+    //                 //address: req.query.address,
+    //                 forecast: forecastData,
+    //                 dailyArray: dailyArr,
+    //                 hourlyArray: hourlyArr
+    //                 })
+    //         })
+    // })  
+    // }
 
-    }
-
-    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+ geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
         if(error){
             return res.send({error})
         }
@@ -88,6 +87,7 @@ app.get('/weather', (req, res) => {
             })
     })        
 })
+
 
 app.get('/products', (req,res) => {
     if(!req.query.search){

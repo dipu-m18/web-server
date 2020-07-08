@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/lightslider.css"/>
+        {{!-- <link rel="stylesheet" type="text/css" href="/css/lightslider.css"/> --}}
 
         {{!-- <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,7 +23,7 @@
 
         
        <script src="js/JQuery3.3.1.js" type="text/javascript" ></script>
-       <script src="js/lightSlider.js" type="text/javascript" ></script>
+       {{!-- <script src="js/lightSlider.js" type="text/javascript" ></script> --}}
     {{!-- slider --}}
      </head>
 
@@ -38,30 +38,34 @@
           <div>
             <form>
                  <input placeholder="Location">
-                 <button class="hoverr">Search</button><br>
+                 {{!-- <button class="buttonn hoverr">Search</button><br> --}}
              </form>
         
                <h2 id="location"></h2>
                <p id="date"></p>
-               <div class="weather-icon"></div>
-               <p><h3 id="weatherDescription"></h3></p>
-            
-                 {{!-- <div class="button-box">
-                    <div class="btn" onclick="this.classList.toggle('active')"></div>
-                     <button id="button1" class="toggle">Daily</button>
-                     <button id="button2" class="toggle">Hourly</button>
-                </div> --}}
+               <p class="weather-icon"></p>
+               <h3 id="weatherDescription"></h3>
+               {{!-- <br> --}}
+               {{!-- <p class="div11"> --}}
+                
                 <div class="button-box">
                     <div id="btn" ></div>
-                     <button id="button1" class="toggle" >Daily</button>
-                     <button id="button2" class="toggle" >Hourly</button>
+                     <button id="button1" class="buttonn toggle" >Daily</button>
+                     <button id="button2" class="buttonn toggle" >Hourly</button>
                 </div>
            </div>
+
            <div>
-               <h3 id="temperature">40</h3>
+               <h3 id="temperature"></h3>
                <p class="sub-temp"><span id="maxTemp"></span><span id="minTemp"></span></p>
-               <br>
-               <button id="moreDetails" class="hoverr">More details</button>
+                <button id="moreDetails" class="buttonn hoverr">More details</button>
+               <br><br>
+               <span>
+                   <button class="circlebtn hoverr" id="prev" onClick="myFunctionn()">&#x27A4;</button>
+                   <button class="circlebtn hoverr" onClick="myFunction()">&#x27A4;</button>
+             </span>
+               </div>
+               
            </div>
         </div>
         
@@ -104,22 +108,23 @@
                     </tr>
                 </table>
             </div>
-            <div class="modal-footer">
+            {{!-- <div class="modal-footer">
                 <button id="close2" class="values"></button>
-            </div>
+            </div> --}}
         </div>
     </div>
 
     {{!-- slider --}}
-   
-        <div class="container">
+    
+        
+        <div class="container" id="ccc">
             <!-- slider -->
             
              <ul id="autoWidth" class="cs-hidden">
                <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day0"></span>&nbsp; ,<span id="month0"></span><span id="date0"></span></h4>
+                            <h4><span id="day0"></span>&nbsp;<span id="month0"></span><span id="date0"></span></h4>
                             <div class="model" id="icon0"></div>
                             <!-- details -->
                             <div class="details" >
@@ -134,7 +139,7 @@
                <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day1"></span>&nbsp; ,<span id="month1"></span><span id="date1"></span></h4>
+                            <h4><span id="day1"></span>&nbsp;<span id="month1"></span><span id="date1"></span></h4>
                             <div class="model" id="icon1"></div>
                             <!-- details -->
                             <div class="details" >
@@ -149,7 +154,7 @@
                 <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day2"></span>&nbsp; ,<span id="month2"></span><span id="date2"></span></h4>
+                            <h4><span id="day2"></span>&nbsp;<span id="month2"></span><span id="date2"></span></h4>
                             <div class="model" id="icon2"></div>
                             <!-- details -->
                             <div class="details" >
@@ -164,7 +169,7 @@
                 <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day3"></span>&nbsp; ,<span id="month3"></span><span id="date3"></span></h4>
+                            <h4><span id="day3"></span>&nbsp;<span id="month3"></span><span id="date3"></span></h4>
                             <div class="model" id="icon3"></div>
                             <!-- details -->
                             <div class="details" >
@@ -179,7 +184,7 @@
                 <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day4"></span>&nbsp; ,<span id="month4"></span><span id="date4"></span></h4>
+                            <h4><span id="day4"></span>&nbsp;<span id="month4"></span><span id="date4"></span></h4>
                             <div class="model" id="icon4"></div>
                             <!-- details -->
                             <div class="details" >
@@ -194,7 +199,7 @@
                 <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day5"></span>&nbsp; ,<span id="month5"></span><span id="date5"></span></h4>
+                            <h4><span id="day5"></span>&nbsp;<span id="month5"></span><span id="date5"></span></h4>
                             <div class="model" id="icon5"></div>
                             <!-- details -->
                             <div class="details" >
@@ -209,7 +214,7 @@
                 <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day6"></span>&nbsp; ,<span id="month6"></span><span id="date6"></span></h4>
+                            <h4><span id="day6"></span>&nbsp;<span id="month6"></span><span id="date6"></span></h4>
                             <div class="model" id="icon6"></div>
                             <!-- details -->
                             <div class="details" >
@@ -224,7 +229,7 @@
                 <li class="item-a">
                     <div class="box">
                             <!-- model -->
-                            <h4><span id="day7"></span>&nbsp; ,<span id="month7"></span><span id="date7"></span></h4>
+                            <h4><span id="day7"></span>&nbsp;<span id="month7"></span><span id="date7"></span></h4>
                             <div class="model" id="icon7"></div>
                             <!-- details -->
                             <div class="details" >
@@ -242,7 +247,8 @@
        
     {{!-- slider --}}
     {{>footer}}
-    <script src="/js/script.js" type="text/javascript"></script>
+    
+    {{!-- <script src="/js/script.js" type="text/javascript"></script> --}}
      <script src="/js/app.js"></script>
 </body>
 
