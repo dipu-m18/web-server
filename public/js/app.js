@@ -37,6 +37,7 @@ const wind= document.querySelector('#wind')
 let dailyArray
 let hourlyArray
 let weatherData
+//let location
 let background
 background='clear'
 displayBackground(background)
@@ -101,24 +102,25 @@ span.onclick = function(){
 
 moreDetails.onclick = function(){
     modal.style.display="block";
-    fetch('/weather?address='+location).then((response) => {
-    response.json().then((data) => {
+
+//     fetch('/weather?address='+location).then((response) => {
+//     response.json().then((data) => {
         
-        if(data.error){
-            messageOne.textContent = data.error
-        }
-        else{
+//         if(data.error){
+//             messageOne.textContent = data.error
+//         }
+//         else{
             
-            feelsLike = data.forecast.feelsLike + '\u02DA'
-            dewsPoint= data.forecast.dewsPoint + '\u02DA'
-            clouds= data.forecast.clouds+ '%'
-            humidity= data.forecast.humidity + '%'
-            pressure= data.forecast.pressure + 'hPa'
-            wind= data.forecast.windSpeed + 'meter/sec'
+//             feelsLike = data.forecast.feelsLike+ '\u02DA'
+//             dewsPoint= data.forecast.dewsPoint+ '\u02DA'
+//             clouds= data.forecast.clouds+ '%'
+//             humidity= data.forecast.humidity+ '%'
+//             pressure= data.forecast.pressure+ 'hPa'
+//             wind= data.forecast.windSpeed+ 'meter/sec'
             
-        }
-    })
-})   
+//         }
+//     })
+// })   
 }
 
 weatherForm.addEventListener('submit', (e) => {
@@ -167,12 +169,12 @@ function displayWeather(data){
     messageFour.textContent = data.forecast.weatherDesc
     messageFive.textContent = data.forecast.maxx+ '\u02DA'
     messageSix.textContent = data.forecast.minn+ '\u02DA'
-    feelsLike.textContent = data.forecast.feelsLike
-    dewsPoint.textContent= data.forecast.dewsPoint
-    clouds.textContent= data.forecast.clouds
-     humidity.textContent= data.forecast.humidity
-    pressure.textContent= data.forecast.pressure
-    wind.textContent= data.forecast.windSpeed
+    feelsLike.textContent = data.forecast.feelsLike+ '\u02DA'
+    dewsPoint.textContent= data.forecast.dewsPoint+ '\u02DA'
+    clouds.textContent= data.forecast.clouds+ ' %'
+    humidity.textContent= data.forecast.humidity+ ' %'
+    pressure.textContent= data.forecast.pressure+ ' hPa'
+    wind.textContent= data.forecast.windSpeed+ ' meter/sec'
 }
 
 
