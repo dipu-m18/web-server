@@ -248,6 +248,7 @@ function displayBackground(background){
         document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/clearSky.jpg')";
     }
     else if(background==='clouds'){
+        //"node src/app.js"
         document.body.style.backgroundImage="linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),url('../wallpaper/clouds.jpg')";
     }
     else if(background==='drizzle'){

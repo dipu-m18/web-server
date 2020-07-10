@@ -56,7 +56,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url("../img/sky.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url("../wallpaper/clearSky.jpg");
     background-size: cover;
     font-family: 'Montserrat', sans-serif; 
     /* font-family: 'Raleway', sans-serif; */
